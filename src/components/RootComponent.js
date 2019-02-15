@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import Location from "./Location";
-import Garage from "./Garage";
-import Additionals from "./Additionals";
+import { workingPlace, parking, superpowers } from "./../constants/buttons"
+import Switch from "./Switch";
 
 class RootComponent extends Component {
     constructor (props) {
@@ -21,15 +20,15 @@ class RootComponent extends Component {
                 <Header>PUK PUK</Header>
                 <Property disabled={!this.state.isAuthorized}>
                     <h6>Gdzie jesteś?</h6>
-                    <Location/>
+                    <Switch oneValue buttons={workingPlace}/>
                 </Property>
                 <Property disabled={!this.state.isAuthorized}>
                     <h6>Gdzie parkujesz?</h6>
-                    <Garage/>
+                    <Switch oneValue buttons={parking}/>
                 </Property>
                 <Property disabled={!this.state.isAuthorized}>
                     <h6>Super moce</h6>
-                    <Additionals/>
+                    <Switch buttons={superpowers}/>
                 </Property>
             </Wrapper>
         )
