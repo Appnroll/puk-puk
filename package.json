@@ -2,7 +2,7 @@
   "name": "puk-puk",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://pukpuk.mudita.com/",
+  "homepage": "https://pukpuk.mudita.com/",
   "dependencies": {
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
