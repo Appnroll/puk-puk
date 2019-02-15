@@ -8,7 +8,7 @@ class RootComponent extends Component {
     constructor (props) {
        super(props)
        this.state = {
-           isAuthorized: false,
+           isAuthorized: true,
            inOffice: false,
            garageTaken: false,
            haveKey: false

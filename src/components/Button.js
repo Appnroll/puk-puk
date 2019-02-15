@@ -4,15 +4,12 @@ import styled from 'styled-components'
 class Button extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            active: props.active
-        }
     }
 
 
     render () {
         return (
-            <StyledButton active={this.state.active}>
+            <StyledButton active={this.props.active} onClick={this.props.onClick} className={this.props.className}>
                 <div>{ this.props.children }</div>
             </StyledButton>
         )
@@ -21,7 +18,7 @@ class Button extends Component {
 
 export default Button
 
-const StyledButton = styled.main`
+const StyledButton = styled.button`
   width: 120px;
   height: 120px;
   border-radius: 50%;
@@ -30,10 +27,17 @@ const StyledButton = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 10px 10px 0 0;
   &:hover {
     cursor: pointer;
   }
+  &:focus {
+    outline: none;
+  }
   > div {
     text-align: center;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: 'Lato', sans-serif;
   }
 `

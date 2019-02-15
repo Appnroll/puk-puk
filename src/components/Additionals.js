@@ -6,18 +6,18 @@ class Additionals extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            office: true
+            key: false
         }
     }
 
     setCurrentState = () => {
-        this.setState({ active: !this.state.active})
+        this.setState({ key: !this.state.key})
     }
 
     render () {
         return (
             <Row>
-                <Button active={this.state.office}>
+                <Button active={this.state.key} onClick={this.setCurrentState.bind(this, 'key')}>
                     MAM KLUCZ
                 </Button>
             </Row>
