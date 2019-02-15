@@ -1,35 +1,22 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { workingPlace, parking, superpowers } from "./../constants/buttons"
-import Switch from "./Switch";
+import Form from "./Form";
+import Login from "./Login";
 
 class RootComponent extends Component {
     constructor (props) {
        super(props)
        this.state = {
-           isAuthorized: true,
-           inOffice: false,
-           garageTaken: false,
-           haveKey: false
+           isAuthorized: true
        }
     }
 
     render () {
+        const { isAuthorized } = this.state
         return (
             <Wrapper>
                 <Header>PUK PUK</Header>
-                <Property disabled={!this.state.isAuthorized}>
-                    <h6>Gdzie jesteś?</h6>
-                    <Switch oneValue buttons={workingPlace}/>
-                </Property>
-                <Property disabled={!this.state.isAuthorized}>
-                    <h6>Gdzie parkujesz?</h6>
-                    <Switch oneValue buttons={parking}/>
-                </Property>
-                <Property disabled={!this.state.isAuthorized}>
-                    <h6>Super moce</h6>
-                    <Switch buttons={superpowers}/>
-                </Property>
+                { isAuthorized ? <Form/> : <Login/>}
             </Wrapper>
         )
     }
@@ -51,16 +38,4 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   padding: 20px 0;
-`
-
-const Property = styled.div`
-  border-bottom: 1px solid #ddd;
-  padding: 30px 0;
-  filter: grayscale(${props => props.disabled ? 100 : 0}%);
-  opacity: ${props => props.disabled ? 0.2 : 1};
-  h6 {
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 25px;
-  }
 `

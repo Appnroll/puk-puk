@@ -10,6 +10,6 @@ export const parking = [
     { title: 'przed małym garażem', name: 'inFrontOfSmall' },
 ]
 
-export const superpowers = [
+export const superPowers = [
     { title: 'mam klucz', name: 'key' }
 ]

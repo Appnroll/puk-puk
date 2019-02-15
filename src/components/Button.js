@@ -2,11 +2,6 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 class Button extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-
     render () {
         return (
             <StyledButton active={this.props.active} onClick={this.props.onClick} className={this.props.className}>
