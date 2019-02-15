@@ -6,7 +6,9 @@ import Button from "./Button";
 class Switch extends Component {
     constructor(props) {
         super(props)
-        this.state = props.buttons.map(prop => prop.name)
+        this.state = {
+            ...props.buttons.map(prop => prop.name)
+        }
     }
     setCurrentState = (prop) => {
         this.setState({ [prop]: !this.state[prop]})
@@ -22,7 +24,10 @@ class Switch extends Component {
         return (
             <Row>
                 {this.props.buttons.map(prop => (
-                    <Button active={this.state[prop.name]} onClick={this.setCurrentState.bind(this, prop.name)}>
+                    <Button
+                        active={this.state[prop.name]}
+                        key={prop.name}
+                        onClick={this.setCurrentState.bind(this, prop.name)}>
                         { prop.title }
                     </Button>
                 ))}
