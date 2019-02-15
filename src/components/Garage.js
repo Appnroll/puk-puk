@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import Button from "./Button";
 
-class Location extends Component {
+class Garage extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -18,17 +18,17 @@ class Location extends Component {
         return (
             <Row>
                 <Button active={this.state.office}>
-                    OFFICE
+                    DUŻY GARAŻ
                 </Button>
                 <Button active={this.state.office}>
-                    HOME
+                    MAŁY GARAŻ
                 </Button>
             </Row>
         )
     }
 }
 
-export default Location
+export default Garage
 
 const Row = styled.div`
   display: flex;

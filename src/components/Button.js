@@ -13,7 +13,7 @@ class Button extends Component {
     render () {
         return (
             <StyledButton active={this.state.active}>
-                { this.props.children }
+                <div>{ this.props.children }</div>
             </StyledButton>
         )
     }
@@ -22,8 +22,8 @@ class Button extends Component {
 export default Button
 
 const StyledButton = styled.main`
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   color: white;
   background-color: ${props => props.active ? 'forestgreen' : '#aaa'};
@@ -32,5 +32,8 @@ const StyledButton = styled.main`
   justify-content: center;
   &:hover {
     cursor: pointer;
+  }
+  > div {
+    text-align: center;
   }
 `
