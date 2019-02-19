@@ -6,18 +6,27 @@ export const loginInit = () => ({
     type: AUTHORIZATION_INIT,
 })
 
-export const loginSuccess = (payload) => ({
+export const loginSuccess = payload => ({
     type: AUTHORIZATION_SUCCESS,
+    payload,
+})
+
+export const loginError = payload => ({
+    type: AUTHORIZATION_ERROR,
     payload,
 })
 
 export const login = () => {
     return (dispatch, getState) => {
         // test of redux-thunk
-        fetch('https://randomuser.me/api/?results=1').then(response => {
-            dispatch(loginSuccess(response))
-        })
         dispatch(loginInit())
+        fetch('https://randomuser.me/api/?results=1')
+            .then(response => {
+                dispatch(loginSuccess(response))
+            })
+            .catch(error => {
+                dispatch(loginError(error))
+            })
     }
 
 }
