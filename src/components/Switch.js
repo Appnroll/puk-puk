@@ -7,7 +7,10 @@ class Switch extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            ...props.buttons.map(prop => prop.name)
+            ...props.buttons.reduce((obj, item) => {
+                obj[item.name] = false
+                return obj
+            }, {})
         }
     }
     setCurrentState = (prop) => {
@@ -21,13 +24,15 @@ class Switch extends Component {
         }
     }
     render () {
+        console.log(this.state)
         return (
             <Row>
                 {this.props.buttons.map(prop => (
                     <Button
                         active={this.state[prop.name]}
                         key={prop.name}
-                        onClick={this.setCurrentState.bind(this, prop.name)}>
+                        name={prop.name}
+                        onClick={this.setCurrentState}>
                         { prop.title }
                     </Button>
                 ))}

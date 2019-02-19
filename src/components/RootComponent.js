@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { connect } from "react-redux"
+import { connect } from 'react-redux'
 import styled from 'styled-components'
-import Form from "./Form";
-import Login from "./Login";
-import { login } from "../store/actions/auth.actions"
-import Button from "./Button";
+import Form from './Form'
+import Login from './Login'
+import { login } from '../store/actions/auth.actions'
 
 class RootComponent extends Component {
     render () {
@@ -12,8 +11,8 @@ class RootComponent extends Component {
         return (
             <Wrapper>
                 <Header>PUK PUK</Header>
-                { pending && <div>Trwa pukanie...</div>}
-                { authorized ? <Form/> : <Login/>}
+                {pending && <div>Trwa pukanie...</div>}
+                {!authorized ? <Form/> : <Login/>}
             </Wrapper>
         )
     }
@@ -21,7 +20,7 @@ class RootComponent extends Component {
 
 const mapStateToProps = state => ({
     authorized: state.auth.authorized,
-    pending: state.auth.pending
+    pending: state.auth.pending,
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -3,9 +3,10 @@ import styled from 'styled-components'
 
 class Button extends Component {
     render () {
+        const { active, name, onClick, className, children } = this.props
         return (
-            <StyledButton active={this.props.active} onClick={this.props.onClick} className={this.props.className}>
-                <div>{ this.props.children }</div>
+            <StyledButton active={active} onClick={() => onClick(name)} className={className}>
+                <div>{ children }</div>
             </StyledButton>
         )
     }
