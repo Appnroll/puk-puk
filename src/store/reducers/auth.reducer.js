@@ -1,4 +1,4 @@
-import { AUTHORIZATION_INIT } from './../actions/auth.actions'
+import { AUTHORIZATION_INIT, AUTHORIZATION_SUCCESS, AUTHORIZATION_ERROR } from './../actions/auth.actions'
 
 export const defaultState = {
     authorized: false,
@@ -12,9 +12,9 @@ const authReducer = (state = defaultState, action) => {
     switch (action.type) {
         case AUTHORIZATION_INIT:
             return { ...defaultState, pending: true }
-        case 'AUTHORIZATION_SUCCESS':
+        case AUTHORIZATION_SUCCESS:
             return { ...state, pending: false, authorized: true }
-        case 'AUTHORIZATION_ERROR':
+        case AUTHORIZATION_ERROR:
             return { ...state, pending: false, error: action.payload }
     }
     return {

@@ -2,10 +2,14 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 class Button extends Component {
+    onClickTrigger = () => {
+        const { name, onClick } = this.props
+        onClick(name)
+    }
     render () {
-        const { active, name, onClick, className, children } = this.props
+        const { active, className, children } = this.props
         return (
-            <StyledButton active={active} onClick={() => onClick(name)} className={className}>
+            <StyledButton active={active} onClick={this.onClickTrigger} className={className}>
                 <div>{ children }</div>
             </StyledButton>
         )

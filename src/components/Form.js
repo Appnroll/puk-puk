@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { workingPlace, parking, superPowers } from "./../constants/buttons"
-import Switch from "./Switch";
+import { workingPlace, parking, superPowers } from './../constants/buttons'
+import Switch from './Switch'
 
 class Form extends Component {
     constructor (props) {
@@ -9,7 +9,7 @@ class Form extends Component {
         this.state = {
             inOffice: false,
             garageTaken: false,
-            haveKey: false
+            haveKey: false,
         }
     }
 
@@ -21,10 +21,10 @@ class Form extends Component {
                     <h6>Gdzie jesteś?</h6>
                     <Switch oneValue buttons={workingPlace}/>
                 </Property>
-                { inOffice && <Property disabled>
+                {inOffice && <Property disabled>
                     <h6>Gdzie parkujesz?</h6>
                     <Switch oneValue buttons={parking}/>
-                </Property> }
+                </Property>}
                 <Property disabled>
                     <h6>Super moce</h6>
                     <Switch buttons={superPowers}/>

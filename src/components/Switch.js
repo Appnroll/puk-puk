@@ -1,30 +1,30 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import Button from "./Button";
-
+import Button from './Button'
 
 class Switch extends Component {
-    constructor(props) {
+    constructor (props) {
         super(props)
         this.state = {
             ...props.buttons.reduce((obj, item) => {
                 obj[item.name] = false
                 return obj
-            }, {})
+            }, {}),
         }
     }
+
     setCurrentState = (prop) => {
-        this.setState({ [prop]: !this.state[prop]})
+        this.setState({ [prop]: !this.state[prop] })
         if (this.props.oneValue) {
             for (let objProp in this.state) {
                 if (this.state[objProp]) {
-                    this.setState({ [objProp]: false})
+                    this.setState({ [objProp]: false })
                 }
             }
         }
     }
+
     render () {
-        console.log(this.state)
         return (
             <Row>
                 {this.props.buttons.map(prop => (
@@ -33,7 +33,7 @@ class Switch extends Component {
                         key={prop.name}
                         name={prop.name}
                         onClick={this.setCurrentState}>
-                        { prop.title }
+                        {prop.title}
                     </Button>
                 ))}
             </Row>

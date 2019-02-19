@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import Form from './Form'
 import Login from './Login'
-import { login } from '../store/actions/auth.actions'
 
 class RootComponent extends Component {
     render () {
@@ -12,7 +11,7 @@ class RootComponent extends Component {
             <Wrapper>
                 <Header>PUK PUK</Header>
                 {pending && <div>Trwa pukanie...</div>}
-                {!authorized ? <Form/> : <Login/>}
+                {authorized ? <Form/> : <Login/>}
             </Wrapper>
         )
     }
@@ -23,11 +22,7 @@ const mapStateToProps = state => ({
     pending: state.auth.pending,
 })
 
-const mapDispatchToProps = dispatch => ({
-    login: () => dispatch(login()),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(RootComponent)
+export default connect(mapStateToProps)(RootComponent)
 
 const Wrapper = styled.main`
   margin: 0 auto;
