@@ -19,8 +19,8 @@ class Button extends Component {
 export default Button
 
 const StyledButton = styled.button`
-  width: 120px;
-  height: 120px;
+  width: 125px;
+  height: 125px;
   border-radius: 50%;
   color: white;
   background-color: ${props => props.active ? 'forestgreen' : '#aaa'};

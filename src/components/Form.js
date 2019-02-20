@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { workingPlace, parking, superPowers } from './../constants/buttons'
 import Switch from './Switch'
+import Button from './Button'
 
 class Form extends Component {
     constructor (props) {
@@ -13,21 +14,44 @@ class Form extends Component {
         }
     }
 
+    mapButtons = (buttons) => {
+        return ({ change, isActive }) => buttons.map(button => (
+            <Button
+                active={isActive(button.name)}
+                key={button.name}
+                name={button.name}
+                onClick={change}>
+                {button.title}
+            </Button>
+        ))
+    }
+
     render () {
-        const { inOffice } = this.state
         return (
             <>
                 <Property>
                     <h6>Gdzie jesteś?</h6>
-                    <Switch oneValue buttons={workingPlace}/>
+                    <Row>
+                        <Switch oneValue>
+                            { this.mapButtons(workingPlace) }
+                        </Switch>
+                    </Row>
                 </Property>
-                {inOffice && <Property disabled>
+                <Property>
                     <h6>Gdzie parkujesz?</h6>
-                    <Switch oneValue buttons={parking}/>
-                </Property>}
-                <Property disabled>
+                    <Row>
+                        <Switch oneValue>
+                            { this.mapButtons(parking) }
+                        </Switch>
+                    </Row>
+                </Property>
+                <Property>
                     <h6>Super moce</h6>
-                    <Switch buttons={superPowers}/>
+                    <Row>
+                        <Switch>
+                            { this.mapButtons(superPowers) }
+                        </Switch>
+                    </Row>
                 </Property>
             </>
         )
@@ -44,4 +68,9 @@ const Property = styled.div`
   h6 {
     margin-bottom: 25px;
   }
+`
+
+const Row = styled.div`
+  display: flex;
+  flex-wrap: wrap;
 `

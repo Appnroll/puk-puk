@@ -8,13 +8,14 @@ import thunk from 'redux-thunk'
 import App from './App'
 
 import authReducer from './store/reducers/auth.reducer'
+import statusReducer from './store/reducers/status.reducer'
 
 import './styles/reset.css'
 import './styles/global.css'
 
 import * as serviceWorker from './serviceWorker'
 
-const rootReducer = combineReducers({ auth: authReducer });
+const rootReducer = combineReducers({ auth: authReducer, status: statusReducer });
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(

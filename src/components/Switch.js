@@ -5,45 +5,34 @@ import Button from './Button'
 class Switch extends Component {
     constructor (props) {
         super(props)
-        this.state = {
-            ...props.buttons.reduce((obj, item) => {
-                obj[item.name] = false
-                return obj
-            }, {}),
-        }
+        this.state = {}
+    }
+
+    isActive = (prop) => {
+        return this.state[prop]
     }
 
     setCurrentState = (prop) => {
-        this.setState({ [prop]: !this.state[prop] })
         if (this.props.oneValue) {
-            for (let objProp in this.state) {
-                if (this.state[objProp]) {
-                    this.setState({ [objProp]: false })
-                }
-            }
+            this.setState({
+                ...Object.keys(this.state)
+                    .reduce((acc, current) => ({
+                        ...acc,
+                        [current]: false
+                    }), {}),
+                [prop]: !this.state[prop]
+            })
+        } else {
+            this.setState({ [prop]: !this.state[prop] })
         }
     }
 
     render () {
-        return (
-            <Row>
-                {this.props.buttons.map(prop => (
-                    <Button
-                        active={this.state[prop.name]}
-                        key={prop.name}
-                        name={prop.name}
-                        onClick={this.setCurrentState}>
-                        {prop.title}
-                    </Button>
-                ))}
-            </Row>
-        )
+        return this.props.children({
+            change: this.setCurrentState,
+            isActive: this.isActive
+        })
     }
 }
 
 export default Switch
-
-const Row = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`
