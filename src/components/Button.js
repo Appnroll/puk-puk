@@ -23,7 +23,7 @@ const StyledButton = styled.button`
   height: 125px;
   border-radius: 50%;
   color: white;
-  background-color: ${props => props.active ? 'forestgreen' : '#aaa'};
+  background-color: ${props => props.active ? 'forestgreen' : '#bbb'};
   display: flex;
   align-items: center;
   justify-content: center;

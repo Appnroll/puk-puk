@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Route, Switch, HashRouter, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import Form from './Form'
@@ -10,8 +11,12 @@ class RootComponent extends Component {
         return (
             <Wrapper>
                 <Header>PUK PUK</Header>
-                {pending && <div>Trwa pukanie...</div>}
-                {authorized ? <Form/> : <Login/>}
+                <HashRouter>
+                    <Switch>
+                        <Route exact path="/login" render={() => (authorized ? (<Redirect to="/"/>) : (<Login/>))}/>
+                        <Route exact path="/" component={Form}/>
+                    </Switch>
+                </HashRouter>
             </Wrapper>
         )
     }

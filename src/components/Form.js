@@ -14,6 +14,10 @@ class Form extends Component {
         }
     }
 
+    componentDidMount () {
+
+    }
+
     mapButtons = (buttons) => {
         return ({ changeState, isActive }) => buttons.map(button => (
             <Button
