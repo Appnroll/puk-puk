@@ -13,7 +13,7 @@ class Login extends Component {
 
                 <h5>HIPOPOTAM</h5>
                 <LoginWithSlackButton/>
-                {pending && <div>Trwa pukanie...</div>}
+                {/*{pending && <div>Trwa pukanie...</div>}*/}
             </Container>
         )
     }
@@ -31,8 +31,14 @@ const mapDispatchToProps = dispatch => ({
 export default connect(mapStateToProps, mapDispatchToProps)(Login)
 
 const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 20px;
-    h4 {
-      margin-bottom: 20px;
+    h4, h5 {
+      margin-bottom: 30px;
+    }
+    h5 {
+      font-size: 26px;
     }
 `

@@ -1,32 +1,39 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import Colors from '../constants/Colors'
+import { withRouter } from 'react-router'
 
 class Menu extends Component {
     render () {
         const links = [
             {
                 to: { pathname: '/', search: '?token=test' },
-                title: 'dashboard',
+                title: 'ty',
                 exact: true,
             },
             {
-                to: { pathname: '/login' },
-                title: 'login',
+                to: { pathname: '/list', search: '?token=test' },
+                title: 'inni',
+            },
+            {
+                to: { pathname: '/logout' },
+                title: 'wyjście',
             },
         ]
         return (
             <nav>
                 <MenuList>
                     {
-                        links.map(link => (
-                            <li>
-                                <NavLink exact={link.exact} to={link.to} activeStyle={{ color: Colors.Mustard }}>
-                                    {link.title}
-                                </NavLink>
-                            </li>
-                        ))
+                        this.props.authorized &&
+                            links.map(link => (
+                                <li>
+                                    <NavLink exact={link.exact} to={link.to} activeStyle={{ color: Colors.Mustard }}>
+                                        {link.title}
+                                    </NavLink>
+                                </li>
+                            ))
                     }
                 </MenuList>
             </nav>
@@ -34,12 +41,16 @@ class Menu extends Component {
     }
 }
 
-export default Menu
+const mapStateToProps = state => ({
+    authorized: state.auth.authorized,
+})
+
+export default withRouter(connect(mapStateToProps)(Menu))
 
 const MenuList = styled.ul`
   display: flex;
   justify-content: flex-end;
-  margin-top: 10px;
+  margin-top: 5px;
   @media (max-width: 680px) {
     flex-direction: column;
   }
