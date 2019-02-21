@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { workingPlace, parking, superPowers } from './../constants/buttons'
+import { workingPlace, parking, superPowers } from '../constants/Buttons'
 import Switch from './Switch'
 import Button from './Button'
 import AuthRequired from './AuthRequired'

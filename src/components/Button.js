@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import Colors from '../constants/Colors'
 
 class Button extends Component {
     onClickTrigger = () => {
@@ -24,7 +25,7 @@ const StyledButton = styled.button`
   border-radius: 50%;
   color: white;
   border: none;
-  background-color: ${props => props.active ? 'forestgreen' : '#bbb'};
+  background-color: ${props => props.active ? Colors.SoftDarkBlue : '#bbb'};
   display: flex;
   align-items: center;
   justify-content: center;

@@ -4,11 +4,17 @@ import styled from 'styled-components'
 import Form from './Form'
 import Login from './Login'
 
+import logo from './../assets/puk-puk-logo.png'
+
 class RootComponent extends Component {
     render () {
         return (
             <Wrapper>
-                <Header>PUK PUK</Header>
+                <Header>
+                    <Logo>
+                        <img src={logo}/>
+                    </Logo>
+                </Header>
                 <HashRouter>
                     <Switch>
                         <Route exact path="/login" component={Login}/>
@@ -25,7 +31,7 @@ export default RootComponent
 const Wrapper = styled.main`
   margin: 0 auto;
   padding: 0 20px;
-  max-width: 1240px;
+  max-width: 940px;
   width: 100%;
   box-sizing: border-box;
 `
@@ -36,4 +42,11 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   padding: 20px 0;
+`
+const Logo = styled.div`
+  display: inline-block;
+  height: 100px;
+  img {
+    height: 100%;
+  }
 `
