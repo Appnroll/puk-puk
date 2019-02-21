@@ -1,6 +1,4 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
-import Button from './Button'
+import { Component } from 'react'
 
 class Switch extends Component {
     constructor (props) {

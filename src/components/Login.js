@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import LoginWithSlackButton from './LoginWithSlackButton'
 import { login } from '../store/actions/auth.actions'
-import Button from './Button'
 
 class Login extends Component {
     render () {
@@ -11,8 +10,9 @@ class Login extends Component {
         return (
             <Container>
                 <h4>Kto tam?</h4>
-                {/*<LoginWithSlackButton/>*/}
-                <Button onClick={this.props.login} name={'hipopotam'}>Hipopotam</Button>
+
+                <h5>HIPOPOTAM</h5>
+                <LoginWithSlackButton/>
                 {pending && <div>Trwa pukanie...</div>}
             </Container>
         )

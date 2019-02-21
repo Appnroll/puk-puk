@@ -12,6 +12,7 @@ class LoginWithSlackButton extends Component {
                 <img
                     alt="Login with Slack"
                     src="https://platform.slack-edge.com/img/sign_in_with_slack.png"
+                    width={'150px'}
                     srcSet="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x"/>
             </a>
         )

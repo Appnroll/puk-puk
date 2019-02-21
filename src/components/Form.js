@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { workingPlace, parking, superPowers } from './../constants/buttons'
 import Switch from './Switch'
 import Button from './Button'
+import AuthRequired from './AuthRequired'
 
 class Form extends Component {
     constructor (props) {
@@ -12,10 +13,6 @@ class Form extends Component {
             garageTaken: false,
             haveKey: false,
         }
-    }
-
-    componentDidMount () {
-
     }
 
     mapButtons = (buttons) => {
@@ -32,7 +29,7 @@ class Form extends Component {
 
     render () {
         return (
-            <>
+            <AuthRequired>
                 <Property>
                     <h6>Gdzie jesteś?</h6>
                     <Row>
@@ -57,7 +54,7 @@ class Form extends Component {
                         </Switch>
                     </Row>
                 </Property>
-            </>
+            </AuthRequired>
         )
     }
 }

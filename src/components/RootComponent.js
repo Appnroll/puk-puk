@@ -1,19 +1,17 @@
 import React, { Component } from 'react'
-import { Route, Switch, HashRouter, Redirect } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { Route, Switch, HashRouter } from 'react-router-dom'
 import styled from 'styled-components'
 import Form from './Form'
 import Login from './Login'
 
 class RootComponent extends Component {
     render () {
-        const { authorized, pending } = this.props
         return (
             <Wrapper>
                 <Header>PUK PUK</Header>
                 <HashRouter>
                     <Switch>
-                        <Route exact path="/login" render={() => (authorized ? (<Redirect to="/"/>) : (<Login/>))}/>
+                        <Route exact path="/login" component={Login}/>
                         <Route exact path="/" component={Form}/>
                     </Switch>
                 </HashRouter>
@@ -22,12 +20,7 @@ class RootComponent extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    authorized: state.auth.authorized,
-    pending: state.auth.pending,
-})
-
-export default connect(mapStateToProps)(RootComponent)
+export default RootComponent
 
 const Wrapper = styled.main`
   margin: 0 auto;
