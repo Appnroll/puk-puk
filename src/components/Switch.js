@@ -29,7 +29,7 @@ class Switch extends Component {
 
     render () {
         return this.props.children({
-            change: this.setCurrentState,
+            changeState: this.setCurrentState,
             isActive: this.isActive
         })
     }
