@@ -3,25 +3,27 @@ import { Route, Switch, HashRouter } from 'react-router-dom'
 import styled from 'styled-components'
 import Form from './Form'
 import Login from './Login'
+import Menu from './Menu'
 
 import logo from './../assets/puk-puk-logo.png'
 
 class RootComponent extends Component {
     render () {
         return (
-            <Wrapper>
-                <Header>
-                    <Logo>
-                        <img src={logo}/>
-                    </Logo>
-                </Header>
-                <HashRouter>
+            <HashRouter>
+                <Wrapper>
+                    <Header>
+                        <Logo>
+                            <img src={logo}/>
+                        </Logo>
+                        <Menu/>
+                    </Header>
                     <Switch>
                         <Route exact path="/login" component={Login}/>
                         <Route exact path="/" component={Form}/>
                     </Switch>
-                </HashRouter>
-            </Wrapper>
+                </Wrapper>
+            </HashRouter>
         )
     }
 }
@@ -37,10 +39,8 @@ const Wrapper = styled.main`
 `
 
 const Header = styled.header`
-  font-size: 36px;
-  letter-spacing: 2px;
   display: flex;
-  align-items: center;
+  justify-content: space-between;
   padding: 20px 0;
 `
 const Logo = styled.div`
