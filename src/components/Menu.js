@@ -9,11 +9,11 @@ class Menu extends Component {
             {
                 to: { pathname: '/', search: '?token=test' },
                 title: 'dashboard',
-                exact: true
+                exact: true,
             },
             {
                 to: { pathname: '/login' },
-                title: 'login'
+                title: 'login',
             },
         ]
         return (
@@ -22,8 +22,8 @@ class Menu extends Component {
                     {
                         links.map(link => (
                             <li>
-                                <NavLink exact={link.exact} to={link.to} activeStyle={{color: Colors.Mustard}}>
-                                    { link.title }
+                                <NavLink exact={link.exact} to={link.to} activeStyle={{ color: Colors.Mustard }}>
+                                    {link.title}
                                 </NavLink>
                             </li>
                         ))
@@ -40,6 +40,9 @@ const MenuList = styled.ul`
   display: flex;
   justify-content: flex-end;
   margin-top: 10px;
+  @media (max-width: 680px) {
+    flex-direction: column;
+  }
   li {
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -58,8 +61,11 @@ const MenuList = styled.ul`
       background-color: ${Colors.Mustard};
     }
     &:hover {
-      margin-bottom: 0;
-      border-bottom: 2px solid ${Colors.Mustard};
+      cursor: pointer;
+      @media (min-width: 680px) {
+        margin-bottom: 0;
+        border-bottom: 2px solid ${Colors.Mustard};
+      }  
     }
   }
 `

@@ -45,7 +45,10 @@ const Header = styled.header`
 `
 const Logo = styled.div`
   display: inline-block;
-  height: 100px;
+  height: 85px;
+  @media (max-width: 680px) {
+    height: 65px;
+  }
   img {
     height: 100%;
   }
