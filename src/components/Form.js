@@ -15,12 +15,12 @@ class Form extends Component {
     }
 
     mapButtons = (buttons) => {
-        return ({ change, isActive }) => buttons.map(button => (
+        return ({ changeState, isActive }) => buttons.map(button => (
             <Button
                 active={isActive(button.name)}
                 key={button.name}
                 name={button.name}
-                onClick={change}>
+                onClick={changeState}>
                 {button.title}
             </Button>
         ))

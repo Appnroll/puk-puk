@@ -1,7 +1,0 @@
-export const SET_OFFICE = 'SET_OFFICE'
-export const SET_HOME = 'SET_HOME'
-export const SET_SMALL_GARAGE = 'SET_SMALL_GARAGE'
-export const SET_BIG_GARAGE = 'SET_BIG_GARAGE'
-export const SET_FRONT_OF_SMALL_GARAGE = 'SET_FRONT_OF_SMALL_GARAGE'
-export const SET_FRONT_OF_BIG_GARAGE = 'SET_FRONT_OF_BIG_GARAGE'
-export const SET_KEY = 'SET_KEY'
