@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import LoginWithSlackButton from './LoginWithSlackButton'
-import { login } from '../store/actions/auth.actions'
+import { loginInit } from '../store/actions/auth.actions'
 
 class Login extends Component {
     render () {
@@ -25,7 +25,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    login: () => dispatch(login()),
+    loginInit: () => dispatch(loginInit()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

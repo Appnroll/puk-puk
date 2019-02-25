@@ -15,18 +15,3 @@ export const loginError = payload => ({
     type: AUTHORIZATION_ERROR,
     payload,
 })
-
-export const login = () => {
-    return (dispatch, getState) => {
-        // test of redux-thunk
-        dispatch(loginInit())
-        fetch('https://randomuser.me/api/?results=1')
-            .then(response => {
-                dispatch(loginSuccess(response))
-            })
-            .catch(error => {
-                dispatch(loginError(error))
-            })
-    }
-
-}

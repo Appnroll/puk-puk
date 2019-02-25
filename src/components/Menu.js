@@ -28,7 +28,7 @@ class Menu extends Component {
                     {
                         this.props.authorized &&
                             links.map(link => (
-                                <li>
+                                <li key={link.title}>
                                     <NavLink exact={link.exact} to={link.to} activeStyle={{ color: Colors.Mustard }}>
                                         {link.title}
                                     </NavLink>

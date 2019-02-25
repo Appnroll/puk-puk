@@ -13,7 +13,7 @@ const authReducer = (state = defaultState, action) => {
         case AUTHORIZATION_INIT:
             return { ...defaultState, pending: true }
         case AUTHORIZATION_SUCCESS:
-            return { ...state, pending: false, authorized: true }
+            return { ...state, pending: false, authorized: true, accessToken: action.token, user: action.user }
         case AUTHORIZATION_ERROR:
             return { ...state, pending: false, error: action.payload }
     }
