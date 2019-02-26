@@ -9,16 +9,22 @@ class AuthRequired extends Component {
         super(props)
     }
 
+    authorizationItemKey = 'pukpuk-authentication-token'
+
+    saveInLocalStorage (data) {
+        localStorage.setItem(this.authorizationItemKey, JSON.stringify(data))
+    }
+
     getTokenFromStore () {
         const { authorized, accessToken, currentUser } = this.props
         return authorized ? {
             token: accessToken,
-            user: currentUser
+            user: currentUser,
         } : false
     }
 
     getTokenFromLocalStorage () {
-        let token = localStorage.getItem('pukpuk-authentication-token')
+        let token = localStorage.getItem(this.authorizationItemKey)
         return token ? JSON.parse(token) : false
     }
 
@@ -28,23 +34,26 @@ class AuthRequired extends Component {
         const user = query.get('user')
         return query ? { token, user } : false
     }
+
     verifyAuthorization () {
+        const { loginInit, loginSuccess, loginError } = this.props
+        loginInit()
         const authData = this.getTokenFromStore() || this.getTokenFromLocalStorage() || this.getTokenFromUrl()
         if (authData) {
-            localStorage.setItem('pukpuk-authentication-token', JSON.stringify(authData))
+            this.saveInLocalStorage(authData)
             loginSuccess({
                 token: authData.token,
-                user: authData.user
+                user: authData.user,
             })
         } else {
             loginError({
-                error: ''
+                error: '',
             })
         }
     }
 
     componentDidMount () {
-        if(!this.verifyAuthorization()) {
+        if (!this.verifyAuthorization()) {
             this.props.history.push('/login')
         }
     }
@@ -58,7 +67,7 @@ class AuthRequired extends Component {
 const mapStateToProps = state => ({
     authorized: state.auth.authorized,
     pending: state.auth.pending,
-    accessToken: state.auth
+    accessToken: state.auth,
 })
 
 const mapDispatchToProps = dispatch => ({
