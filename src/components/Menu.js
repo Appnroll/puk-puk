@@ -9,12 +9,12 @@ class Menu extends Component {
     render () {
         const links = [
             {
-                to: { pathname: '/', search: '?token=test' },
+                to: { pathname: '/' },
                 title: 'ty',
                 exact: true,
             },
             {
-                to: { pathname: '/list', search: '?token=test' },
+                to: { pathname: '/list' },
                 title: 'inni',
             },
             {

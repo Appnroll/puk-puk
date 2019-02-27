@@ -6,6 +6,8 @@ import Login from './Login'
 import Menu from './Menu'
 
 import logo from './../assets/puk-puk-logo.png'
+import AuthRequired from './AuthRequired'
+import Logout from './Logout'
 
 class RootComponent extends Component {
     render () {
@@ -19,8 +21,10 @@ class RootComponent extends Component {
                         <Menu/>
                     </Header>
                     <Switch>
-                        <Route exact path="/login" component={Login}/>
                         <Route exact path="/" component={Form}/>
+                        <Route path="/login" component={Login}/>
+                        <Route path="/logout" component={Logout}/>
+                        <Route path="/auth" component={AuthRequired}/>
                     </Switch>
                 </Wrapper>
             </HashRouter>
