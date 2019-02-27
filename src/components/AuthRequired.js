@@ -61,7 +61,7 @@ class AuthRequired extends Component {
     }
 
     componentDidMount () {
-        this.verifyAuthorization() ? this.props.history.push('/') : this.props.history.push('/login')
+        this.props.history.push(this.verifyAuthorization() ? '/' : '/login')
     }
 
     render () {
@@ -70,10 +70,10 @@ class AuthRequired extends Component {
 
 }
 
-const mapStateToProps = state => ({
-    authorized: state.auth.authorized,
-    pending: state.auth.pending,
-    accessToken: state.auth.accessToken,
+const mapStateToProps = ({ auth }) => ({
+    authorized: auth.authorized,
+    pending: auth.pending,
+    accessToken: auth.accessToken,
 })
 
 const mapDispatchToProps = dispatch => ({
