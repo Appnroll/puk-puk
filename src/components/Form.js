@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { workingPlace, parking, superPowers } from "./../constants/buttons"
-import Switch from "./Switch";
+import { workingPlace, parking, superPowers } from '../constants/Buttons'
+import Switch from './Switch'
+import Button from './Button'
+import AuthRequired from './AuthRequired'
 
 class Form extends Component {
     constructor (props) {
@@ -9,27 +11,50 @@ class Form extends Component {
         this.state = {
             inOffice: false,
             garageTaken: false,
-            haveKey: false
+            haveKey: false,
         }
     }
 
+    mapButtons = (buttons) => {
+        return ({ changeState, isActive }) => buttons.map(button => (
+            <Button
+                active={isActive(button.name)}
+                key={button.name}
+                name={button.name}
+                onClick={changeState}>
+                {button.title}
+            </Button>
+        ))
+    }
+
     render () {
-        const { inOffice } = this.state
         return (
-            <>
+            <AuthRequired>
                 <Property>
                     <h6>Gdzie jesteś?</h6>
-                    <Switch oneValue buttons={workingPlace}/>
+                    <Row>
+                        <Switch oneValue>
+                            { this.mapButtons(workingPlace) }
+                        </Switch>
+                    </Row>
                 </Property>
-                { inOffice && <Property disabled>
+                <Property>
                     <h6>Gdzie parkujesz?</h6>
-                    <Switch oneValue buttons={parking}/>
-                </Property> }
-                <Property disabled>
-                    <h6>Super moce</h6>
-                    <Switch buttons={superPowers}/>
+                    <Row>
+                        <Switch oneValue>
+                            { this.mapButtons(parking) }
+                        </Switch>
+                    </Row>
                 </Property>
-            </>
+                <Property>
+                    <h6>Super moce</h6>
+                    <Row>
+                        <Switch>
+                            { this.mapButtons(superPowers) }
+                        </Switch>
+                    </Row>
+                </Property>
+            </AuthRequired>
         )
     }
 }
@@ -44,4 +69,9 @@ const Property = styled.div`
   h6 {
     margin-bottom: 25px;
   }
+`
+
+const Row = styled.div`
+  display: flex;
+  flex-wrap: wrap;
 `

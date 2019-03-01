@@ -4,7 +4,7 @@ export const workingPlace = [
 ]
 
 export const parking = [
-    { title: 'duży garaż', name: 'big' },
+    { title: 'duży garaż', name: 'big'},
     { title: 'mały garaż', name: 'small' },
     { title: 'przed dużym garażem', name: 'inFrontOfBig' },
     { title: 'przed małym garażem', name: 'inFrontOfSmall' },
