@@ -20,8 +20,8 @@ class Button extends Component {
 export default Button
 
 const StyledButton = styled.button`
-  width: ${props => props.size ? props.size + 'px' : '125px'};
-  height: ${props => props.size ? props.size + 'px' : '125px'};
+  width: ${props => props.size ? props.size + 'px' : '115px'};
+  height: ${props => props.size ? props.size + 'px' : '115px'};
   border-radius: 50%;
   color: white;
   border: none;

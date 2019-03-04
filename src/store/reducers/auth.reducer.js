@@ -1,7 +1,7 @@
 import { AUTHORIZATION_INIT, AUTHORIZATION_SUCCESS, AUTHORIZATION_ERROR, AUTHORIZATION_CLOSED } from './../actions/auth.actions'
 
 export const defaultState = {
-    authorized: false,
+    authorized: true,
     accessToken: null,
     currentUser: null,
     pending: false,

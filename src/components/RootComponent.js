@@ -4,10 +4,11 @@ import styled from 'styled-components'
 import Form from './Form'
 import Login from './Login'
 import Menu from './Menu'
-
 import logo from './../assets/puk-puk-logo.png'
 import AuthRequired from './AuthRequired'
 import Logout from './Logout'
+import Status from './Status'
+import List from './List'
 
 class RootComponent extends Component {
     render () {
@@ -22,6 +23,8 @@ class RootComponent extends Component {
                     </Header>
                     <Switch>
                         <Route exact path="/" component={Form}/>
+                        <Route path="/status" component={Status}/>
+                        <Route path="/list" component={List}/>
                         <Route path="/login" component={Login}/>
                         <Route path="/logout" component={Logout}/>
                         <Route path="/auth" component={AuthRequired}/>
