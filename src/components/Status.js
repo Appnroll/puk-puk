@@ -3,49 +3,41 @@ import styled from 'styled-components'
 import Colors from './../constants/Colors'
 import AuthRequired from './AuthRequired'
 
-class Status extends Component {
-    constructor (props) {
-        super(props)
-    }
-
-    render () {
-        return (
-            <AuthRequired>
-                <Property>
-                    <Row>
-                        <Light active/>
-                        <h6>Biuro otwarte</h6>
-                    </Row>
-                </Property>
-                <Property>
-                    <Row spaceBottom>
-                        <Light active/>
-                        <h6>Duży garaż</h6>
-                    </Row>
-                    <Row spaceBottom>
-                        <Light/>
-                        <h6>Mały garaż</h6>
-                    </Row>
-                    <Row spaceBottom>
-                        <Light/>
-                        <h6>Przed dużym garażem</h6>
-                    </Row>
-                    <Row>
-                        <Light active/>
-                        <h6>Przed małym garażem</h6>
-                    </Row>
-                </Property>
-                <Property>
-                    <Row>
-                        <Light active/>
-                        <h6>Klucz ma:</h6>
-                        <Person>tuhaj</Person>
-                    </Row>
-                </Property>
-            </AuthRequired>
-        )
-    }
-}
+const Status = () => (
+    <AuthRequired>
+        <Property>
+            <Row>
+                <Light active/>
+                <h6>Biuro otwarte</h6>
+            </Row>
+        </Property>
+        <Property>
+            <Row spaceBottom>
+                <Light active/>
+                <h6>Duży garaż</h6>
+            </Row>
+            <Row spaceBottom>
+                <Light/>
+                <h6>Mały garaż</h6>
+            </Row>
+            <Row spaceBottom>
+                <Light/>
+                <h6>Przed dużym garażem</h6>
+            </Row>
+            <Row>
+                <Light active/>
+                <h6>Przed małym garażem</h6>
+            </Row>
+        </Property>
+        <Property>
+            <Row>
+                <Light active/>
+                <h6>Klucz ma:</h6>
+                <Person>tuhaj</Person>
+            </Row>
+        </Property>
+    </AuthRequired>
+)
 
 export default Status
 
