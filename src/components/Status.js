@@ -40,7 +40,7 @@ const Status = () => (
             <Row>
                 <Light active/>
                 <h6>Biuro zamyka:</h6>
-                /* This data will be filled by backend response */
+                {/* This data will be filled by backend response */}
                 <Person>tuhaj</Person>
                 <ClosingTime>o {new Date().getHours()}:{new Date().getMinutes()}</ClosingTime>
             </Row>
