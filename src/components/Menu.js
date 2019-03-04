@@ -14,6 +14,10 @@ class Menu extends Component {
                 exact: true,
             },
             {
+                to: { pathname: '/status' },
+                title: 'status',
+            },
+            {
                 to: { pathname: '/list' },
                 title: 'inni',
             },
