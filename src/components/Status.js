@@ -10,7 +10,7 @@ class Status extends Component {
 
     render () {
         return (
-            <>
+            <AuthRequired>
                 <Property>
                     <Row>
                         <Light active/>
@@ -42,7 +42,7 @@ class Status extends Component {
                         <Person>tuhaj</Person>
                     </Row>
                 </Property>
-            </>
+            </AuthRequired>
         )
     }
 }

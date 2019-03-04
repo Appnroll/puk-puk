@@ -61,7 +61,13 @@ class AuthRequired extends Component {
     }
 
     componentDidMount () {
-        this.props.history.push(this.verifyAuthorization() ? '/' : '/login')
+        if (this.verifyAuthorization()) {
+            if (this.props.location.pathname === '/auth'){
+                this.props.history.push('/')
+            }
+        } else {
+            this.props.history.push('/login')
+        }
     }
 
     render () {

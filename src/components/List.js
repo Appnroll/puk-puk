@@ -17,20 +17,28 @@ class Status extends Component {
 
     render () {
         return (
-            <>
+            <AuthRequired>
                 <Property>
                     <h6>W biurze:</h6>
                     <PeopleList>
-                        {this.people.map(person => (<Person office>{ person }</Person>))}
+                        {this.people.map(person => (
+                            <Person office key={person}>
+                                { person }
+                            </Person>
+                        ))}
                     </PeopleList>
                 </Property>
                 <Property>
                     <h6>Online:</h6>
                     <PeopleList>
-                        {this.people.map(person => (<Person>{ person }</Person>))}
+                        {this.people.map(person => (
+                            <Person office key={person}>
+                                { person }
+                            </Person>
+                        ))}
                     </PeopleList>
                 </Property>
-            </>
+            </AuthRequired>
         )
     }
 }
@@ -49,7 +57,7 @@ const PeopleList = styled.ul`
 `
 
 const Person = styled.li`
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   margin-left: 20px;
   margin-right: 15px;
   position: relative;
