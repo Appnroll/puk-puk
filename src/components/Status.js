@@ -36,6 +36,15 @@ const Status = () => (
                 <Person>tuhaj</Person>
             </Row>
         </Property>
+        <Property>
+            <Row>
+                <Light active/>
+                <h6>Biuro zamyka:</h6>
+                /* This data will be filled by backend response */
+                <Person>tuhaj</Person>
+                <ClosingTime>o {new Date().getHours()}:{new Date().getMinutes()}</ClosingTime>
+            </Row>
+        </Property>
     </AuthRequired>
 )
 
@@ -66,4 +75,8 @@ const Light = styled.div`
 
 const Person = styled.p`
   margin-left: 10px;
+`
+
+const ClosingTime = styled.p`
+  margin-left: 5px;
 `
