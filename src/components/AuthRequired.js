@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router";
+import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import {
   loginInit,
   loginSuccess,
-  loginError
-} from "../store/actions/auth.actions";
-import { connect } from "react-redux";
-import _get from "lodash.get";
+  loginError,
+} from '../store/actions/auth.actions';
+import { connect } from 'react-redux';
+import _get from 'lodash.get';
 
-export const authorizationItemKey = "pukpuk-authentication-token";
+export const authorizationItemKey = 'pukpuk-authentication-token';
 
 class AuthRequired extends Component {
   saveInLocalStorage(data) {
@@ -20,7 +20,7 @@ class AuthRequired extends Component {
     return authorized
       ? {
           token: accessToken,
-          user: currentUser
+          user: currentUser,
         }
       : false;
   }
@@ -32,16 +32,16 @@ class AuthRequired extends Component {
 
   getTokenFromUrl = () => {
     const query = new URLSearchParams(
-      _get(this.props, "location.search", null)
+      _get(this.props, 'location.search', null)
     );
-    const token = query.get("token");
-    const user = query.get("name");
+    const token = query.get('token');
+    const user = query.get('name');
     return query ? { token, user } : false;
   };
 
   getToken = () => {
-    const currentPath = _get(this.props, "location.pathname", null);
-    if (currentPath === "/auth") {
+    const currentPath = _get(this.props, 'location.pathname', null);
+    if (currentPath === '/auth') {
       return this.getTokenFromUrl();
     } else {
       return this.getTokenFromStore() || this.getTokenFromLocalStorage();
@@ -56,12 +56,12 @@ class AuthRequired extends Component {
       this.saveInLocalStorage(authData);
       loginSuccess({
         token: authData.token,
-        user: authData.user
+        user: authData.user,
       });
       return true;
     } else {
       loginError({
-        error: "Cannot authorize"
+        error: 'Cannot authorize',
       });
       return false;
     }
@@ -69,11 +69,11 @@ class AuthRequired extends Component {
 
   componentDidMount() {
     if (this.verifyAuthorization()) {
-      if (this.props.location.pathname === "/auth") {
-        this.props.history.push("/");
+      if (this.props.location.pathname === '/auth') {
+        this.props.history.push('/');
       }
     } else {
-      this.props.history.push("/login");
+      this.props.history.push('/login');
     }
   }
 
@@ -85,13 +85,13 @@ class AuthRequired extends Component {
 const mapStateToProps = ({ auth }) => ({
   authorized: auth.authorized,
   pending: auth.pending,
-  accessToken: auth.accessToken
+  accessToken: auth.accessToken,
 });
 
 const mapDispatchToProps = dispatch => ({
   loginInit: () => dispatch(loginInit()),
   loginSuccess: payload => dispatch(loginSuccess(payload)),
-  loginError: payload => dispatch(loginError(payload))
+  loginError: payload => dispatch(loginError(payload)),
 });
 
 export default withRouter(
