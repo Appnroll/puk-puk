@@ -27,6 +27,14 @@ class Form extends Component {
         ))
     }
 
+    makeOptions = (from, to, space = 1) => {
+        const options = []
+        for (let i = from; i <= to; i = i + space) {
+            options.push(<option>{i}</option>)
+        }
+        return options
+    }
+
     render () {
         return (
             <AuthRequired>
@@ -34,15 +42,20 @@ class Form extends Component {
                     <h6>Gdzie jesteś?</h6>
                     <Row>
                         <Switch oneValue>
-                            { this.mapButtons(workingPlace) }
+                            {this.mapButtons(workingPlace)}
                         </Switch>
                     </Row>
+                </Property>
+                <Property>
+                    <h6>Do której dziś pracujesz?</h6>
+                    <Hours>{this.makeOptions(0, 23)}</Hours>:
+                    <Hours>{this.makeOptions(0, 59, 5)}</Hours>
                 </Property>
                 <Property>
                     <h6>Gdzie parkujesz?</h6>
                     <Row>
                         <Switch oneValue>
-                            { this.mapButtons(parking) }
+                            {this.mapButtons(parking)}
                         </Switch>
                     </Row>
                 </Property>
@@ -50,7 +63,7 @@ class Form extends Component {
                     <h6>Super moce</h6>
                     <Row>
                         <Switch>
-                            { this.mapButtons(superPowers) }
+                            {this.mapButtons(superPowers)}
                         </Switch>
                     </Row>
                 </Property>
@@ -74,4 +87,12 @@ const Property = styled.div`
 const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
+`
+
+const Hours = styled.select`
+  border: none;
+  height: 30px;
+  width: 50px;
+  font-size: 20px;
+  background: none;
 `
