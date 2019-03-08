@@ -5,7 +5,7 @@ import User from '../models/User'
 export const getOfficeState = () => {
     return fetch(baseUrl + '/office/state')
         .then(response => {
-            return new Office(response.data)
+            return Office.fromApi(response.data)
         }).catch(error => {
             console.error(error)
         })
@@ -14,7 +14,7 @@ export const getOfficeState = () => {
 export const getOfficePeople = () => {
     return fetch(baseUrl + '/office/people/inhouse')
         .then(response => {
-            return response.data.map(person => new User(person))
+            return response.data.map(person => User.fromApi(person))
         }).catch(error => {
             console.error(error)
         })
@@ -23,7 +23,7 @@ export const getOfficePeople = () => {
 export const getRemotePeople = () => {
     return fetch(baseUrl + '/office/people/remote')
         .then(response => {
-            return response.data.map(person => new User(person))
+            return response.data.map(person => User.fromApi(person))
         }).catch(error => {
             console.error(error)
         })

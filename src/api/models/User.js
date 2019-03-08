@@ -11,6 +11,17 @@ class User {
         this.hasKey = props.hasKey
     }
 
+    static fromApi (data) {
+        return new User({
+            id: data.id,
+            name: data.name,
+            avatar: data.avatar,
+            workingPlace: WorkingPlace.fromApi(data.workingPlace),
+            garageTaken: Garage.fromApi(data.garageTaken),
+            hasKey: data.hasKey
+        })
+    }
+
     getPersonalData () {
         return {
             id: this.id,
