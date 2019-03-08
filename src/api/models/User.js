@@ -10,6 +10,22 @@ class User {
         this.garageTaken = new Garage(props.garageTaken)
         this.hasKey = props.hasKey
     }
+
+    getPersonalData () {
+        return {
+            id: this.id,
+            name: this.name,
+            avatar: this.avatar
+        }
+    }
+
+    getState () {
+        return {
+            workingPlace: this.workingPlace,
+            garageTaken: this.garageTaken,
+            hasKey: this.hasKey
+        }
+    }
 }
 
 export default User
