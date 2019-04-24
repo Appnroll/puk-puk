@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import Colors from './../constants/Colors'
+import { redirectUri } from '../api'
 
 const scope = 'identity.basic'
 const clientId = '' // TODO: possibly move to ENV
-const redirectUri = encodeURIComponent('https://...')
 const slackUrl = `https://slack.com/oauth/authorize?scope=${scope}&client_id=${clientId}&redirect_uri=${redirectUri}`
 
 class LoginWithSlackButton extends Component {
